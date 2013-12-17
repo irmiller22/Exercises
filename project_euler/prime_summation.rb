@@ -10,7 +10,7 @@ class PrimeSummation
 	end
 
 	def prime?(number)
-		(2..number).each {|i| return false if number % i == 0}
+		(2..Math.sqrt(number)).each {|i| next if i % 2 == 0; return false if number % i == 0 }
 		true
 	end
 
@@ -21,11 +21,12 @@ class PrimeSummation
 	end
 
 	def primes_array_sum(number)
-		puts primes(number)
+		prime_summation = primes(number).inject(:+)
+		puts prime_summation
 	end
 end
 
-ps = PrimeSummation.new(200)
+ps = PrimeSummation.new(1999999)
 ps.run
 
 binding.pry

@@ -1,0 +1,25 @@
+class LargestPalindrome
+	def initialize
+		palindrome_product
+	end
+
+	def is_palindrome?(input)
+		input.to_s == input.to_s.reverse
+	end
+
+	def palindrome_product
+		max = 0
+
+		(100..999).each do |first|
+			(100..999).each do |second|
+				product = first * second
+				if is_palindrome?(product) && product > max
+					max = product
+				end
+			end
+		end
+		puts max
+	end
+end
+
+LargestPalindrome.new
