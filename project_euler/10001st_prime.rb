@@ -10,7 +10,6 @@ class Prime
 	def is_prime?(number)
 		return false if number == 0 || number == 1
 		integers =* (2..Math.sqrt(number).round)
-		print integers
 		integers.each {|i| return false if number % i == 0}
 		true 
 	end
@@ -22,9 +21,8 @@ class Prime
 			number += 1
 			count += 1 if is_prime?(number)
 		end
-		# puts "#{number} is the #{count}st Prime."
+		puts "#{number} is the #{count}st Prime."
 	end
 end
 
-hello = Prime.new(3)
-binding.pry
+hello = Prime.new(10001)
