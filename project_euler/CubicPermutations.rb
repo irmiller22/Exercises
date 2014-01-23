@@ -3,29 +3,54 @@ require 'test/unit'
 
 # Find the smallest cube for which exactly five permutations of its digits are cube.
 
+# First Version
+# class CubicPermutation
+# 	attr_reader :hash, :final
+
+# 	def initialize(num)
+# 		@hash = {}
+# 		@final = []
+# 		cube
+# 		permutations(num)
+# 	end
+
+# 	def cube
+# 		(345..9999).each do |n|
+# 			cube = n ** 3
+# 			perm = cube.to_s.split("").sort.join
+# 			@hash[perm] ||= []
+# 			@hash[perm] << cube
+# 		end
+# 	end
+
+# 	def permutations(num)
+# 		@hash.each do |k,v|
+# 			if v.count >= num
+# 				@final = @hash[k]
+# 				break
+# 			end
+# 		end
+# 	end
+# end
+
+# Refactored version
 class CubicPermutation
-	attr_reader :array, :final
+	attr_reader :hash, :final
 
 	def initialize(num)
-		@array = {}
+		@hash = {}
 		@final = []
-		cube
 		permutations(num)
 	end
 
-	def cube
-		(345..9999).each do |num|
-			cube = num ** 3
-			perm = cube.to_s.split("").sort.join
-			@array[perm] ||= []
-			@array[perm] << cube
-		end
-	end
-
 	def permutations(num)
-		@array.each do |k,v|
-			if v.count >= num
-				@final = @array[k]
+		(345..12500).each do |n|
+			cube = n ** 3
+			perm = cube.to_s.split("").sort.join
+			@hash[perm] ||= []
+			@hash[perm] << cube
+			if @hash[perm].length == num
+				@final = @hash[perm]
 				break
 			end
 		end

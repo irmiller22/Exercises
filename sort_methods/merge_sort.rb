@@ -1,7 +1,7 @@
 def merge_sort(array)
 	return array if array.size < 2
 	left = array[0, array.length/2]
-	right = array[array.length/2, array.length]
+	right = array[array.length/2, array.length-1]
 
 	merge(merge_sort(left), merge_sort(right))
 end
@@ -10,6 +10,7 @@ def merge(left, right)
 	sorted_array = []
 	until left.empty? || right.empty?
 		sorted_array << (left[0] <= right[0] ? left.shift : right.shift)
+		p sorted_array
 	end
 	sorted_array.concat(left).concat(right)
 	p sorted_array
