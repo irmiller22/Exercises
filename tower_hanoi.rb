@@ -1,3 +1,5 @@
+require 'pry'
+
 a = [1,2,3,4]
 b = []
 c = []
@@ -15,6 +17,7 @@ def move(num, from, via, to)
 	watch_hanoi(from, via, to)
 	sleep(1)
 	to
+	binding.pry
 end
 
 def watch_hanoi(from, via, to)
